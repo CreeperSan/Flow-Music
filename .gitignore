@@ -127,3 +127,12 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# 本地临时文件
+temp.txt
+
+# 数据库升级记录文件
+*/migrations/*.py
+
+# IDEA
+.idea
