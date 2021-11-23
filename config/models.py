@@ -64,7 +64,8 @@ class MusicStyle(models.Model):
     id = models.AutoField(primary_key=True)                                             # 数据库 自增ID
     create_time = models.DateTimeField(auto_now_add=True)                               # 数据库 添加时间
     update_time = models.DateTimeField(auto_now=True)                                   # 数据库 更新时间
-    name = models.CharField(max_length=128, unique=True)                                # 音乐流派 名称（具体展示文本让应用本地做映射）
+    style = models.SmallIntegerField(unique=True)                                       # 音乐流派 标志
+    name = models.CharField(max_length=128, unique=True)                                # 音乐流派 名称（仅用于后台展示）
 
 
 # 歌词文件格式
@@ -77,3 +78,11 @@ class LyricFormat(models.Model):
     alias = models.CharField(max_length=64)                                                     # 歌词文件格式 标志对应的别名，仅用于后台配置时展示
 
 
+# 设备平台
+# 0-未指定，1-Android，2-iOS，3-Windows，4-Linux，5-MacOS，6-Web
+class Platform(models.Model):
+    id = models.AutoField(primary_key=True)                                                     # 数据库 自增ID
+    create_time = models.DateTimeField(auto_now_add=True)                                       # 数据库 添加时间
+    update_time = models.DateTimeField(auto_now=True)                                           # 数据库 更新时间
+    platform_code = models.IntegerField(unique=True)                                            # 设备平台 平台编号
+    platform_name = models.CharField(max_length=64)                                             # 设备平台 名称（仅用于后台配置中展示）

@@ -55,7 +55,7 @@ class Music(models.Model):
     format = models.CharField(max_length=32)                                            # 音乐 文件格式（mp3,flac,...）
     bpm = models.FloatField()                                                           # 音乐 每分钟节拍数
     images = models.JSONField()                                                         # 音乐 图片[{url:string}, ...]
-    # uploader = models.OneToOneField('',  on_delete=models.PROTECT)                      # 音乐 上传人
+    uploader = models.OneToOneField('auth.User',  on_delete=models.PROTECT, null=True)  # 音乐 上传人
 
 
 # 专辑模型
@@ -82,5 +82,5 @@ class Lyric(models.Model):
     duration = models.IntegerField()                                                    # 歌词 持续时间
     url = models.TextField()                                                            # 歌词 下载地址
     format = models.OneToOneField('config.LyricFormat', on_delete=models.PROTECT)       # 歌词 文件格式
-    # uploader = models.OneToOneField('',  on_delete=models.PROTECT)                      # 歌词 上传人
+    uploader = models.OneToOneField('auth.User',  on_delete=models.PROTECT, null=True)  # 歌词 上传人
 
